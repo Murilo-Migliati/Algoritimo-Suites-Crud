@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Algoritimo_Suites.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Reservas</h1>
+
+<p>
+    <a asp-action="FazerReservas"class="btn btn-success">Fazer Reserva</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumQuarto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatasReservadas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcionario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filial)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumQuarto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatasReservadas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcionario.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filial.Id)
+            </td>
+            <td>
+                    <!-- Contêiner para alinhar os botões -->
+                    <div class="button-group">
+                        <!-- Link para Editar -->
+                        <a asp-action="EditarReservas" asp-route-id="@item.Id" class="btn btn-outline-primary">Editar</a>
+
+                        <!-- Link para Detalhes -->
+                        <a asp-action="DetalhesReservas" asp-route-id="@item.Id" class="btn btn-outline-primary">Detalhes</a>
+
+                        <!-- Formulário para Deletar -->
+                        <form asp-action="DeletarReservas" asp-route-id="@item.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Deletar</button>
+                        </form>
+                    </div>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

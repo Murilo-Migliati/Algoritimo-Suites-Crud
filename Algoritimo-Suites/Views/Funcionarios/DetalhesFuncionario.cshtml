@@ -1,0 +1,18 @@
+﻿@model Algoritimo_Suites.Models.Funcionario
+
+<div>
+    <h4>Funcionario</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div class="button-group">
+    <a asp-action="EditarFuncionario" asp-route-id="@Model?.Id" class="btn btn-outline-primary">Editar Funcionario</a> |
+    <a asp-action="Index" class="btn btn-outline-primary">Voltar para Funcionarios</a>
+</div>

@@ -1,0 +1,18 @@
+﻿@model Algoritimo_Suites.Models.Cliente
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditarCliente" asp-route-id="@Model?.Id" class="btn btn-outline-primary">Editar Cliente</a> |
+    <a asp-action="Index" class="btn btn-outline-primary">Retornar aos Clientes</a>
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Algoritimo_Suites.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Funcionario</h1>
+
+<p>
+    <a asp-action="NovoFuncionario"class="btn btn-success">Novo Funcionario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    <!-- Contêiner para alinhar os botões -->
+                    <div class="button-group">
+                        <!-- Link para Editar -->
+                        <a asp-action="EditarFuncionario" asp-route-id="@item.Id" class="btn btn-outline-primary">Editar</a>
+
+                        <!-- Link para Detalhes -->
+                        <a asp-action="DetalhesFuncionario" asp-route-id="@item.Id" class="btn btn-outline-primary">Detalhes</a>
+
+                        <!-- Formulário para Deletar -->
+                        <form asp-action="DeletarFuncionario" asp-route-id="@item.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Deletar</button>
+                        </form>
+                    </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
